@@ -1,8 +1,6 @@
 const HomeController = {
-  welcome: (req, res) => {
-    const { name } = req.params;
-
-    res.send(`Hello ${name || "world"}`);
+  index: (req, res) => {
+    res.json({ message: "Gama Buster API", version: "1.0.0" });
   },
 };
 

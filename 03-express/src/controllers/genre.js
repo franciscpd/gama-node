@@ -1,4 +1,4 @@
-const ProductController = {
+const GenreController = {
   index: (req, res) => {
     res.json([]);
   },
@@ -10,8 +10,7 @@ const ProductController = {
 
     res.json({
       id,
-      name: `Produto ${id}`,
-      price: 300,
+      name: `Gênero ${id}`,
     });
   },
   update: (req, res) => {
@@ -27,4 +26,4 @@ const ProductController = {
   },
 };
 
-module.exports = ProductController;
+module.exports = GenreController;
