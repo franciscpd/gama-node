@@ -2,18 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 const HomeController = require("../controllers/home");
-const GenreController = require("../controllers/genre");
+const GeneroController = require("../controllers/genero");
 const FilmController = require("../controllers/film");
 const CustomerController = require("../controllers/customer");
 const OrderController = require("../controllers/order");
 
 router.get("/", HomeController.index);
 
-router.get("/genres", GenreController.index);
-router.post("/genres", GenreController.store);
-router.get("/genres/:id", GenreController.show);
-router.put("/genres/:id", GenreController.update);
-router.delete("/genres/:id", GenreController.destroy);
+router.get("/generos", GeneroController.index);
+router.post("/generos", GeneroController.store);
+router.get("/generos/:id", GeneroController.show);
+router.put("/generos/:id", GeneroController.update);
+router.delete("/generos/:id", GeneroController.destroy);
 
 router.get("/films", FilmController.index);
 router.post("/films", FilmController.store);
