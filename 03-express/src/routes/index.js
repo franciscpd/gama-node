@@ -3,7 +3,7 @@ const router = express.Router();
 
 const HomeController = require("../controllers/home");
 const GeneroController = require("../controllers/genero");
-const FilmController = require("../controllers/film");
+const FilmeController = require("../controllers/filme");
 const CustomerController = require("../controllers/customer");
 const OrderController = require("../controllers/order");
 
@@ -15,11 +15,11 @@ router.get("/generos/:id", GeneroController.show);
 router.put("/generos/:id", GeneroController.update);
 router.delete("/generos/:id", GeneroController.destroy);
 
-router.get("/films", FilmController.index);
-router.post("/films", FilmController.store);
-router.get("/films/:id", FilmController.show);
-router.put("/films/:id", FilmController.update);
-router.delete("/films/:id", FilmController.destroy);
+router.get("/filmes", FilmeController.index);
+router.post("/filmes", FilmeController.store);
+router.get("/filmes/:id", FilmeController.show);
+router.put("/filmes/:id", FilmeController.update);
+router.delete("/filmes/:id", FilmeController.destroy);
 
 router.get("/customers", CustomerController.index);
 router.post("/customers", CustomerController.store);

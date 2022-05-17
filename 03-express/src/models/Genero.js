@@ -12,7 +12,7 @@ const Genero = db.define(
     },
     nome: {
       type: DataTypes.STRING,
-      allowNulls: false,
+      allowNull: false,
     },
   },
   { tableName: "genero", timestamps: false }
