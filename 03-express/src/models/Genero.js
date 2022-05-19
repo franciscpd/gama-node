@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 const db = require("../database");
 
 const Genero = db.define(
-  "Genero",
+  "genero",
   {
     codigo: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ const Genero = db.define(
       allowNull: false,
     },
   },
-  { tableName: "genero", timestamps: false }
+  { tableName: "genero", timestamps: false, underscored: true }
 );
 
 module.exports = Genero;

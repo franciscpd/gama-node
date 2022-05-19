@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 const db = require("../database");
 
 const Filme = db.define(
-  "Filme",
+  "filme",
   {
     codigo: {
       type: DataTypes.INTEGER,
@@ -27,7 +27,7 @@ const Filme = db.define(
       defaultValue: 0,
     },
   },
-  { tableName: "filme", timestamps: false }
+  { tableName: "filme", timestamps: false, underscored: true }
 );
 
 module.exports = Filme;
