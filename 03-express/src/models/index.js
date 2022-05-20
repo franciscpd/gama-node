@@ -41,4 +41,6 @@ module.exports = {
   Genero,
   Cliente,
   Endereco,
+  Reserva,
+  ReservaFilme,
 };
