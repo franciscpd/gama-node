@@ -8,10 +8,13 @@ const ClienteController = require("../controllers/cliente");
 const OrderController = require("../controllers/order");
 const AuthController = require("../controllers/auth");
 
+const authRegisterValidator = require("../validators/auth/register");
+const authLoginValidator = require("../validators/auth/login");
+
 router.get("/", HomeController.index);
 
-router.post("/auth/register", AuthController.store);
-router.post("/auth/signin", AuthController.login);
+router.post("/auth/register", authRegisterValidator, AuthController.store);
+router.post("/auth/signin", authLoginValidator, AuthController.login);
 
 router.get("/generos", GeneroController.index);
 router.post("/generos", GeneroController.store);

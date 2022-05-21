@@ -13,6 +13,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.18.1",
+    "express-validation": "^4.1.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.19.0"
   },
