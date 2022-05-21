@@ -6,8 +6,12 @@ const GeneroController = require("../controllers/genero");
 const FilmeController = require("../controllers/filme");
 const ClienteController = require("../controllers/cliente");
 const OrderController = require("../controllers/order");
+const AuthController = require("../controllers/auth");
 
 router.get("/", HomeController.index);
+
+router.post("/auth/register", AuthController.store);
+router.post("/auth/signin", AuthController.login);
 
 router.get("/generos", GeneroController.index);
 router.post("/generos", GeneroController.store);

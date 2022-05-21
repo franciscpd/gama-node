@@ -1,5 +1,6 @@
 const Filme = require("./Filme");
 const Genero = require("./Genero");
+const Usuario = require("./Usuario");
 const Reserva = require("./Reserva");
 const Cliente = require("./Cliente");
 const Endereco = require("./Endereco");
@@ -43,4 +44,5 @@ module.exports = {
   Endereco,
   Reserva,
   ReservaFilme,
+  Usuario,
 };

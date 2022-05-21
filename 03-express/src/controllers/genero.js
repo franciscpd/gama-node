@@ -1,4 +1,4 @@
-const Genero = require("../models/Genero");
+const { Genero } = require("../models");
 
 const GeneroController = {
   index: async (req, res) => {
