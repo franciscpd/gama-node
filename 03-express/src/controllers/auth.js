@@ -1,6 +1,8 @@
-const Usuario = require("../models/Usuario");
-
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const Usuario = require("../models/Usuario");
+const secret = require("../configs/secret");
 
 const AuthController = {
   login: async (req, res) => {
@@ -16,19 +18,42 @@ const AuthController = {
       return res.status(401).json("Usuário ou senha inválido");
     }
 
-    return res.json(usuario);
+    const user = {
+      codigo: usuario.codigo,
+      nome: usuario.nome,
+      email: usuario.email,
+    };
+    // const { senha: _senha, ...user } = usuario;
+
+    const token = jwt.sign(user, secret.key);
+
+    return res.json({
+      token,
+      user,
+    });
   },
   store: async (req, res) => {
     const { nome, email, senha } = req.body;
     const hashSenha = bcrypt.hashSync(senha, 10);
 
-    const novoUsuario = await Usuario.create({
+    const { codigo } = await Usuario.create({
       nome,
       email,
       senha: hashSenha,
     });
 
-    res.status(201).json(novoUsuario);
+    const user = {
+      codigo,
+      nome,
+      email,
+    };
+
+    const token = jwt.sign(user, secret.key);
+
+    return res.status(201).json({
+      token,
+      user,
+    });
   },
 };
 

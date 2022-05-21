@@ -11,6 +11,8 @@ const AuthController = require("../controllers/auth");
 const authRegisterValidator = require("../validators/auth/register");
 const authLoginValidator = require("../validators/auth/login");
 
+const filmeCreateValidator = require("../validators/filme/create");
+
 router.get("/", HomeController.index);
 
 router.post("/auth/register", authRegisterValidator, AuthController.store);
@@ -23,7 +25,7 @@ router.put("/generos/:id", GeneroController.update);
 router.delete("/generos/:id", GeneroController.destroy);
 
 router.get("/filmes", FilmeController.index);
-router.post("/filmes", FilmeController.store);
+router.post("/filmes", filmeCreateValidator, FilmeController.store);
 router.get("/filmes/:id", FilmeController.show);
 router.put("/filmes/:id", FilmeController.update);
 router.delete("/filmes/:id", FilmeController.destroy);
