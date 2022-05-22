@@ -11,7 +11,7 @@ const AuthController = require("../controllers/auth");
 const authRegisterValidator = require("../validators/auth/register");
 const authLoginValidator = require("../validators/auth/login");
 
-const filmeCreateValidator = require("../validators/filme/create");
+const filmeValidator = require("../validators/filme");
 
 router.get("/", HomeController.index);
 
@@ -25,10 +25,10 @@ router.put("/generos/:id", GeneroController.update);
 router.delete("/generos/:id", GeneroController.destroy);
 
 router.get("/filmes", FilmeController.index);
-router.post("/filmes", filmeCreateValidator, FilmeController.store);
-router.get("/filmes/:id", FilmeController.show);
-router.put("/filmes/:id", FilmeController.update);
-router.delete("/filmes/:id", FilmeController.destroy);
+router.post("/filmes", filmeValidator.create, FilmeController.store);
+router.get("/filmes/:id", filmeValidator.show, FilmeController.show);
+router.put("/filmes/:id", filmeValidator.update, FilmeController.update);
+router.delete("/filmes/:id", filmeValidator.delete, FilmeController.destroy);
 
 router.get("/clientes", ClienteController.index);
 router.post("/clientes", ClienteController.store);

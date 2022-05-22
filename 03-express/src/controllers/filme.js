@@ -102,8 +102,10 @@ const FilmeController = {
     const { id } = req.params;
     const filme = await Filme.findByPk(id);
 
+    console.log(filme);
+
     if (!filme) {
-      res.status(404).json({
+      return res.status(404).json({
         message: "Filme não encontrado",
       });
     }
