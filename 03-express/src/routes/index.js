@@ -12,6 +12,7 @@ const authRegisterValidator = require("../validators/auth/register");
 const authLoginValidator = require("../validators/auth/login");
 
 const filmeValidator = require("../validators/filme");
+const generoValidator = require("../validators/genero");
 
 router.get("/", HomeController.index);
 
@@ -19,10 +20,10 @@ router.post("/auth/register", authRegisterValidator, AuthController.store);
 router.post("/auth/signin", authLoginValidator, AuthController.login);
 
 router.get("/generos", GeneroController.index);
-router.post("/generos", GeneroController.store);
-router.get("/generos/:id", GeneroController.show);
-router.put("/generos/:id", GeneroController.update);
-router.delete("/generos/:id", GeneroController.destroy);
+router.post("/generos", generoValidator.create, GeneroController.store);
+router.get("/generos/:id", generoValidator.show, GeneroController.show);
+router.put("/generos/:id", generoValidator.update, GeneroController.update);
+router.delete("/generos/:id", generoValidator.delete, GeneroController.destroy);
 
 router.get("/filmes", FilmeController.index);
 router.post("/filmes", filmeValidator.create, FilmeController.store);
