@@ -4,7 +4,7 @@ const db = require("../database");
 const Cliente = require("./Cliente");
 
 const Endereco = db.define(
-  "Endereco",
+  "endereco",
   {
     codigo: {
       type: DataTypes.INTEGER,

@@ -13,6 +13,7 @@ const authLoginValidator = require("../validators/auth/login");
 
 const filmeValidator = require("../validators/filme");
 const generoValidator = require("../validators/genero");
+const clienteValidator = require("../validators/cliente");
 
 router.get("/", HomeController.index);
 
@@ -32,10 +33,14 @@ router.put("/filmes/:id", filmeValidator.update, FilmeController.update);
 router.delete("/filmes/:id", filmeValidator.delete, FilmeController.destroy);
 
 router.get("/clientes", ClienteController.index);
-router.post("/clientes", ClienteController.store);
-router.get("/clientes/:id", ClienteController.show);
-router.put("/clientes/:id", ClienteController.update);
-router.delete("/clientes/:id", ClienteController.destroy);
+router.post("/clientes", clienteValidator.create, ClienteController.store);
+router.get("/clientes/:id", clienteValidator.show, ClienteController.show);
+router.put("/clientes/:id", clienteValidator.update, ClienteController.update);
+router.delete(
+  "/clientes/:id",
+  clienteValidator.delete,
+  ClienteController.destroy
+);
 
 router.get("/orders", OrderController.index);
 router.post("/orders", OrderController.store);

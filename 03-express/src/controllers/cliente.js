@@ -27,37 +27,32 @@ const ClienteController = {
 
       const { logradouro, numero, bairro, cidade, estado, cep } = endereco;
 
-      const novoCliente = await Cliente.create(
-        {
-          nome,
-          sobrenome,
-          cpf,
-          telefone,
-          email,
-          data_nascimento,
-          Endereco: {
-            logradouro,
-            numero,
-            bairro,
-            cidade,
-            estado,
-            cep,
-          },
-        },
-        { include: [Endereco] }
-      );
+      const novoCliente = await Cliente.create({
+        nome,
+        sobrenome,
+        cpf,
+        telefone,
+        email,
+        data_nascimento,
+      });
 
-      // await Endereco.create({
-      //   logradouro,
-      //   numero,
-      //   bairro,
-      //   cidade,
-      //   estado,
-      //   cep,
-      //   cliente_id: novoCliente.codigo,
-      // });
+      if (Object.keys(endereco).length > 1) {
+        await Endereco.create({
+          logradouro,
+          numero,
+          bairro,
+          cidade,
+          estado,
+          cep,
+          cliente_id: novoCliente.codigo,
+        });
+      }
 
-      res.json(novoCliente);
+      const clienteAtualizado = await Cliente.findByPk(novoCliente.codigo, {
+        include: Endereco,
+      });
+
+      res.status(201).json(clienteAtualizado);
     } catch (error) {
       console.log(error.message);
       res
